@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shashi-deployment
+spec:  # This is the spec for the deployment
+  replicas: 3
+  selector:
+    matchLabels:
+      app: shashi-app
+  template:
+    metadata:
+      labels:
+        app: shashi-app
+    spec: # This is the spec for the pod template
+      containers:
+      - name: shashi-container
+        image: muralisocial123/flower-app:1.0
+        ports:
+        - containerPort: 3015
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "50m"
+          limits:
+            memory: "250Mi"
+            cpu: "100m"
+      restartPolicy: Always
+  

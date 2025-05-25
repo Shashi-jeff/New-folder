@@ -9,11 +9,11 @@ pipeline {
         AWS_ACCOUNT_ID = "862848730563"
         REGION = "us-west-2"
         REPO_URI = "862848730563.dkr.ecr.us-west-2.amazonaws.com/sre-shashi"
-        DOCKER_IMAGE = "sre-training-shashi-cart:${VERSION}"
+        DOCKER_IMAGE = "sre-shashi-cart:${VERSION}"
         DOCKER_REGISTRY = 'docker.io'
         DOCKER_REGISTRY_CREDENTIALS = 'Docker-cred'
     }
-
+ 
     stages {
         stage('Clone') {
             steps {
@@ -49,8 +49,8 @@ pipeline {
                     echo "📤 Pushing Docker image to Docker Hub..."
                     sh """
                         docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
-                        docker tag ${DOCKER_IMAGE} Shashiranjan2911/${DOCKER_IMAGE}
-                        docker push Shashiranjan2911/${DOCKER_IMAGE}
+                        docker tag ${DOCKER_IMAGE} shashiranjan2911/${DOCKER_IMAGE}
+                        docker push shashiranjan2911/${DOCKER_IMAGE}
                     """
                 }
             }
